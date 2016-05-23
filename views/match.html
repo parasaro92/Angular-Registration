@@ -1,0 +1,84 @@
+<section class="  cf">
+
+  <h2 class="text-center">Add Match</h2>
+
+  <form class="form-horizontal" name="myform" ng-submit="addMatch()" novalidate>
+    <fieldset>
+      <div class="form-group">
+        <div class="row">
+          <div class="container">
+            <div class="col-md-6">
+              <label for="team1" class="col-lg-2 control-label">Team A</label>
+              <div class="col-lg-6">
+                <input type="text" class="form-control" id="team1" placeholder="Team A" ng-model="team1" ng-required="true">
+              </div>
+            </div>
+            <!-- </div> -->
+            <div class="col-md-6">
+              <!-- <div class="form-group"> -->
+              <label for="team2" class="col-lg-2 control-label">Team B</label>
+              <div class="col-lg-6">
+                <input type="team2" class="form-control" id="team2" placeholder="Team B" ng-model="team2">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="container">
+            <div class="col-md-6">
+              <label for="inputVenue" class="col-lg-2 control-label">Venue</label>
+              <div class="col-lg-6">
+                <input type="text" class="form-control" id="Venue" placeholder="Venue" ng-model="venue" ng-required="true">
+              </div>
+            </div>
+            <!-- </div> -->
+            <div class="col-md-6">
+              <!-- <div class="form-group"> -->
+              <label for="type" class="col-lg-2 control-label">League</label>
+              <div class="col-lg-6">
+                <input type="text" class="form-control" id="league" placeholder="League" ng-model="league" ng-required="true">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <style>
+        
+      </style>
+      <!-- <div ng-controller="DatepickerPopupDemoCtrl"> -->
+        
+        <!-- <pre>Selected date is: <em>{{dt | date:'fullDate' }}</em></pre> -->
+
+        <!-- <h4>Popup</h4> -->
+        <div class="row">
+          <div class="container">
+            <div class="col-md-6">
+              <p class="input-group">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default bcc" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+                <input type="text" class="form-control col-md-2 ccc" uib-datepicker-popup="{{format}}" ng-model="date" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="container">
+            <div class="form-group but">
+              <div class="col-lg-6">
+                <button type="reset" class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </fieldset>
+  </form>
+
+</section><!-- meetings cf -->

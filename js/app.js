@@ -1,5 +1,5 @@
 var myApp = angular.module('myApp',
-  ['ngRoute', 'firebase'])
+  ['ngRoute', 'firebase', 'ui.bootstrap'])
   .constant('FIREBASE_URL', 'https://ang-reg.firebaseio.com/');
 
 myApp.run(['$rootScope', '$location', function($rootScope, $location){
@@ -21,14 +21,20 @@ myApp.config(['$routeProvider', function($routeProvider) {
       templateUrl: 'views/register.html',
       controller: 'RegistrationController'
     }).
-    when('/success', {
-      templateUrl: 'views/success.html',
-      controller: 'SuccessController',
+    when('/match', {
+      templateUrl: 'views/match.html',
+      controller: 'MatchCtrl',
+      // controllerAs: 'mlist',
       resolve: {
         currentAuth: function(Authentication) {
           return Authentication.requireAuth();
         } //current Auth
       } // resolve
+    }).
+    when('/show', {
+      templateUrl: 'views/show.html',
+      controller: 'SecondCtrl',
+      controllerAs: 'show'
     }).
     otherwise({
       redirectTo: '/login'

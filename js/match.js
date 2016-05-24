@@ -6,20 +6,28 @@ myApp.controller('MatchCtrl', function($scope, $firebaseArray, FIREBASE_URL){
   $scope.matches = matches;
 
   $scope.addMatch = function() {
+    // console.log($scope.dt);
     matches.$add({
       team1: $scope.team1,
       team2: $scope.team2,
       venue: $scope.venue,
       league: $scope.league,
-      date: $scope.date
+      // dummy: 'hello',
+      dt: $scope.dt.toString('dd-MMMM-yyyy')
       // date: Firebase.ServerValue.TIMESTAMP
     }).then(function(){
+      // console.log($scope.dt.toString('dd-MMMM-yyyy'));
       $scope.team1 = '';
       $scope.team2 = '';
       $scope.venue = '';
       $scope.league = '';
-      $scope.date = '';      
+      $scope.dt = '';    
     });
+  }
+
+  $scope.deleteMatch = function(key){
+
+    matches.$remove(key);
   }
 
   // $scope.today = function() {
@@ -32,25 +40,25 @@ myApp.controller('MatchCtrl', function($scope, $firebaseArray, FIREBASE_URL){
   // };
 
   $scope.inlineOptions = {
-    customClass: getDayClass,
-    minDate: new Date(),
-    showWeeks: true
+    // customClass: getDayClass,
+    minDate: new Date('dd-MMMM-yyyy')
+    // showWeeks: true
   };
 
   $scope.dateOptions = {
-    dateDisabled: disabled,
+    // dateDisabled: disabled,
     formatYear: 'yy',
     maxDate: new Date(2020, 5, 22),
-    minDate: new Date(),
-    startingDay: 1
+    minDate: new Date('dd-MMMM-yyyy')
+    // startingDay: 1
   };
 
   // Disable weekend selection
-  function disabled(data) {
-    var date = data.date,
-      mode = data.mode;
-    return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
-  }
+  // function disabled(data) {
+  //   var date = data.date,
+  //     mode = data.mode;
+  //   return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+  // }
 
   $scope.toggleMin = function() {
     $scope.inlineOptions.minDate = $scope.inlineOptions.minDate ? null : new Date();
@@ -67,46 +75,46 @@ myApp.controller('MatchCtrl', function($scope, $firebaseArray, FIREBASE_URL){
   //   $scope.dt = new Date(year, month, day);
   // };
 
-  $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+  $scope.formats = ['dd-MMMM-yyyy'];
   $scope.format = $scope.formats[0];
-  $scope.altInputFormats = ['M!/d!/yyyy'];
+  $scope.altInputFormats = ['d!/M!/yyyy'];
 
   $scope.popup1 = {
     opened: false
   };
 
-  var tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  var afterTomorrow = new Date();
-  afterTomorrow.setDate(tomorrow.getDate() + 1);
-  $scope.events = [
-    {
-      date: tomorrow,
-      status: 'full'
-    },
-    {
-      date: afterTomorrow,
-      status: 'partially'
-    }
-  ];
+  // var tomorrow = new Date();
+  // tomorrow.setDate(tomorrow.getDate() + 1);
+  // var afterTomorrow = new Date();
+  // afterTomorrow.setDate(tomorrow.getDate() + 1);
+  // $scope.events = [
+  //   {
+  //     date: tomorrow,
+  //     status: 'full'
+  //   },
+  //   {
+  //     date: afterTomorrow,
+  //     status: 'partially'
+  //   }
+  // ];
 
-  function getDayClass(data) {
-    var date = data.date,
-      mode = data.mode;
-    if (mode === 'day') {
-      var dayToCheck = new Date(date).setHours(0,0,0,0);
+  // function getDayClass(data) {
+  //   var date = data.date,
+  //     mode = data.mode;
+  //   if (mode === 'day') {
+  //     var dayToCheck = new Date(date).setHours(0,0,0,0);
 
-      for (var i = 0; i < $scope.events.length; i++) {
-        var currentDay = new Date($scope.events[i].date).setHours(0,0,0,0);
+  //     for (var i = 0; i < $scope.events.length; i++) {
+  //       var currentDay = new Date($scope.events[i].date).setHours(0,0,0,0);
 
-        if (dayToCheck === currentDay) {
-          return $scope.events[i].status;
-        }
-      }
-    }
+  //       if (dayToCheck === currentDay) {
+  //         return $scope.events[i].status;
+  //       }
+  //     }
+  //   }
 
-    return '';
-  }
+  //   return '';
+  // }
 });
 
 myApp.controller('SecondCtrl', function($firebaseArray, FIREBASE_URL){

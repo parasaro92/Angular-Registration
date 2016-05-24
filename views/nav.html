@@ -1,8 +1,8 @@
   <div class="branding"><a href="#/">angularJS</a></div>
   <ul>
-    <li><a ng-href="#/login">Login</a></li>
-    <li><a ng-href="#/match">Match</a></li>
-
-    <li><a ng-href="#/register">Register</a></li>
-    <li><a ng-href="#/show">Show</a></li>
+    <li ng-hide="currentUser"><a ng-href="#/login">Login</a></li>
+    <li ng-hide="currentUser"><a ng-href="#/register">Register</a></li>
+    <li ng-show="currentUser"><a ng-href="#/match">Match</a></li>
+    <!-- <li ng-show="currentUser"><a ng-href="#/logout" ng-click="logout()">logout</a></li> -->
+    <li ng-show="currentUser"><a ng-href="#/show">Show</a></li>
   </ul>

@@ -8,17 +8,21 @@
           <th>Team-B</th>
           <th>Venue</th>
           <th>League</th>
+          <th>Date</th>
+          <!-- <th>Customize</th> -->
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="match in show.matches">
+        <tr ng-repeat="(key,match) in show.matches">
+          <button class="btn btn-delete tooltip" ng-click="deleteMatch(key)"></button>
           <td>{{ match.team1 }}</td>
           <td>{{ match.team2 }}</td>
           <td>{{ match.venue }}</td>
           <td>{{ match.league }}</td>
-          <!-- <td>{{ match.team1 }}</td>       -->
+          <td>{{ match.dt }}</td>
+          <!-- <td>{{ match.customize }}</td>       -->
         </tr>
       </tbody>
-    </table> 
+    <!-- </table>  -->
   </div>
 </div>

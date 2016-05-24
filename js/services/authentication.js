@@ -8,6 +8,7 @@ myApp.factory('Authentication', ['$rootScope', '$firebaseAuth', '$firebaseObject
     if(authUser) {
       var userRef = new Firebase(FIREBASE_URL + 'users/' + authUser.uid);
       var userObj = $firebaseObject(userRef);
+      // console.log(userObj);
       $rootScope.currentUser = userObj;
     } else {
       $rootScope.currentUser = '';

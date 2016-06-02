@@ -4,6 +4,9 @@ myApp.controller('MatchCtrl', function($scope, $firebaseArray, FIREBASE_URL){
   var matches = $firebaseArray(ref);
 
   $scope.matches = matches;
+  $scope.dt = new Date();
+
+
 
   $scope.addMatch = function() {
     // console.log($scope.dt);
@@ -13,7 +16,7 @@ myApp.controller('MatchCtrl', function($scope, $firebaseArray, FIREBASE_URL){
       venue: $scope.venue,
       league: $scope.league,
       // dummy: 'hello',
-      dt: $scope.dt.toString('dd-MMMM-yyyy')
+      dt: new Date().getTime()
       // date: Firebase.ServerValue.TIMESTAMP
     }).then(function(){
       // console.log($scope.dt.toString('dd-MMMM-yyyy'));
